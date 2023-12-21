@@ -1,0 +1,37 @@
+{
+  "name": "cmpaas_backend",
+  "version": "0.0.1",
+  "description": "CMPaaS Official Backend Services",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch ./src/server.ts",
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "start": "node ./dist/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMPaaSProject/CMPaaS_Backend.git"
+  },
+  "keywords": [
+    "CMPaaS",
+    "webservices",
+    "ConceptMap",
+    "fastify"
+  ],
+  "author": "Wagner de Andrade Perin",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/CMPaaSProject/CMPaaS_Backend/issues"
+  },
+  "homepage": "https://github.com/CMPaaSProject/CMPaaS_Backend#readme",
+  "dependencies": {
+    "@types/node": "^20.10.5",
+    "fastify": "^4.25.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  }
+}
