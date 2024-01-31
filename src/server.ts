@@ -12,21 +12,14 @@ const start = async () => {
         port: Number( process.env.PORT ) || 3000,
         host: process.env.HOST || '127.0.0.1'
     };
-    try {
-        await app.listen( options );
-        
-        closeWithGrace( async ( { signal, err, manual } ) => {
-            if( err ) {
-                app.log.error( `Server closing with error ${ err }` );
-            }
-            await app.close();
-        });
-    } catch( err ) {
-        app.log.error( err );
-        process.exit( 1 );
-    }
+    
+    await app.listen( options );
+    closeWithGrace( async ( { signal, err, manual } ) => {
+        if( err ) {
+            app.log.error( `Server closing with error ${ err }` );
+        }
+        await app.close();
+    });
 };
-
-
 
 start();
