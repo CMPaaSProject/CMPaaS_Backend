@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyListenOptions } from 'fastify';
 import { build } from './app';
 import dotenv from 'dotenv';
+import closeWithGrace from 'close-with-grace';
 
 dotenv.config({ path: __dirname + '/.env' });
 
@@ -13,9 +14,19 @@ const start = async () => {
     };
     try {
         await app.listen( options );
+        
+        closeWithGrace( async ( { signal, err, manual } ) => {
+            if( err ) {
+                app.log.error( `Server closing with error ${ err }` );
+            }
+            await app.close();
+        });
     } catch( err ) {
         app.log.error( err );
         process.exit( 1 );
     }
 };
+
+
+
 start();
